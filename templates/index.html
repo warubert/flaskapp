@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}My Web Page{% endblock %}
+{% block content %}
+    <header>
+        <h1>Welcome to My Web Page {{ myvalue }}</h1>
+    </header>
+    <main>
+        <p>This is a simple web page template.</p>
+        {% for item in mylist %}
+            <ul>
+                <li {% if item == 3 %}style="color:red"{% endif %}>{{ item }}</li>
+            </ul>
+        {% endfor %}
+
+        <a href="#" class="btn btn-primary">Botao bootstrap</a>
+        <img src="/img/frog.png" alt="aaaaa">
+    </main>
+    <footer>
+        <p>&copy; 2023 My Web Page</p>
+    </footer>
+{% endblock %}

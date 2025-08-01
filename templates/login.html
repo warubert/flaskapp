@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}login{% endblock %}
+{% block content %}
+    <h1>Login Page</h1>
+    <form method="post" action="{{ url_for('login') }}">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <h1>file upload</h1>
+    <form method="post" action="{{ url_for('file_upload') }}" enctype="multipart/form-data">
+        <label for="file">Select file:</label>
+        <input type="file" name="file" accept="text/plain" required>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h1>JSON REQUEST</h1>
+    <button id="post_button">Send JSON</button>
+
+    <script type="text/javascript">
+        const postButton = document.getElementById('post_button')
+
+        const jsonData = {
+            "name": "John Doe",
+            "greeting": "Hello, World!",
+        }
+
+        postButton.addEventListener('click', () => {
+            fetch('{{ url_for("handle_post") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+{% endblock %}
