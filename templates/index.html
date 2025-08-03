@@ -5,7 +5,13 @@
         <h1>Welcome to My Web Page {{ myvalue }}</h1>
     </header>
     <main>
-        <p>This is a simple web page template.</p>
+
+        {% if current_user.is_authenticated %}
+            <p>{{ current_user.username }}</p>
+        {% else %}
+            <p>No user</p>
+        {% endif %}
+        <!-- <p>This is a simple web page template.</p>
         {% for item in mylist %}
             <ul>
                 <li {% if item == 3 %}style="color:red"{% endif %}>{{ item }}</li>
@@ -14,8 +20,50 @@
 
         <a href="#" class="btn btn-primary">Botao bootstrap</a>
         <img src="/img/frog.png" alt="aaaaa">
+        -->
+        <ul>
+            {% for person in people %}
+                <li>
+                    {{ person }}
+                    <button onclick="deletePerson('{{ person.pid | tojson | safe }}')">Excluir</button>
+                    <a href="{{url_for('detail_person', pid=person.pid)}}">Details</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>nova pessoa</h3>
+        <form action="{{ url_for('index') }}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="job">Job:</label>
+                <input type="text" id="job" name="job" class="form-control" required>
+            <button type="submit" class="btn btn-success" value="Create">Enviar</button>
+        </form>
     </main>
     <footer>
         <p>&copy; 2023 My Web Page</p>
     </footer>
+
+    <script type="text/javascript">
+        function deletePerson(pid) {
+            fetch('{{ url_for("delete_person", pid=pid) }}' + pid, {
+                method: 'DELETE',
+            }).then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to delete person');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            })
+        }
+    </script>
 {% endblock %}

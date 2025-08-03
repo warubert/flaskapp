@@ -1,14 +1,10 @@
-# Flask CRUD App
+# FlaskApp
 
-Este é um projeto muito simples de CRUD bobo e bem mal feito usando Flask e SQLAlchemy.
+Este é um projeto muito simples, bobo e bem mal feito usando Flask e varios conceitos
 
 ## Como rodar o projeto
 
 1. **Clone o repositório:**
-   ```bash
-   git clone <URL-do-repositorio>
-   cd crud
-   ```
 
 2. **Crie e ative um ambiente virtual (opcional):**
    ```bash
@@ -29,11 +25,13 @@ Este é um projeto muito simples de CRUD bobo e bem mal feito usando Flask e SQL
 5. **Inicialize o banco de dados:**
    ```bash
    flask init-db
+   flask db migrate
+   flask db upgrade
    ```
 
 6. **Rode o servidor Flask:**
    ```bash
-   flask run
+   flask --app app run --debug
    ```
 
 7. **Acesse o app no navegador:**

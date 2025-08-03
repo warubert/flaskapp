@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}My Web Page{% endblock %}
+{% block content %}
+    <header>
+        <h1>Welcome to My Web Page</h1>
+    </header>
+    <main>
+        <h1>Person {{ person.pid }}</h1>
+
+        <ul>
+            <li>Name: {{ person.name }}</li>
+            <li>Age: {{ person.age }}</li>
+            <li>Job: {{ person.job }}</li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2023 My Web Page</p>
+    </footer>
+{% endblock %}
