@@ -7,7 +7,7 @@ def index():
     # if request.method == 'POST':
     #     return "This is a POST request", 201
     # return "Hello, World!"
-    myvalue = "AIOOOOOOOOOOO"
+    myvalue = "AIOOOOOOOOOOOu"
     mylist = [1, 2, 3, 4, 5]
     return render_template('index.html', myvalue=myvalue, mylist=mylist)
 
