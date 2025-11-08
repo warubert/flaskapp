@@ -1,5 +1,4 @@
 # FlaskApp
-
 Este é um projeto muito simples, bobo e bem mal feito usando Flask e varios conceitos
 
 https://www.youtube.com/watch?v=oQ5UfJqW5Jo
